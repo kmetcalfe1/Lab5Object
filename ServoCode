@@ -1,0 +1,21 @@
+#include <Servo.h>
+
+Servo myservo;
+int servoPin=9;
+int lightpin=A0;
+int val; 
+void setup() {
+  // put your setup code here, to run once:
+  myservo.attach(servoPin);
+  Serial.begin(9600);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  val=analogRead(lightpin);
+  Serial.println(val);
+  //is it 300 tho
+  val=map(val, 0, 300, 0, 180);
+  myservo.write(val);
+  delay(15);
+}
